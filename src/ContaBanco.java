@@ -22,7 +22,8 @@ public class ContaBanco {
                  System.out.println("-------------------------");
              }else{
                  this.saldo = 50;
-                 System.out.println("Conta do tipo " + tipo + " dono " + dono + " aberta com saldo inicial de 50!");
+                 System.out.println("----Conta----\n Tipo: " + tipo + "\n Dono: " + dono + "\n Aberta com saldo inicial de 50!");
+                 System.out.println("-------------------------");
              }
         }else{
             System.out.println("Conta já aberta! ");
@@ -31,7 +32,7 @@ public class ContaBanco {
 
     }
 
-    public void fecharConta(TipoConta tipo, String dono){
+    public void fecharConta(){
         if (this.status == true){
             if (this.saldo == 0){
                 this.status = false;
@@ -44,14 +45,18 @@ public class ContaBanco {
         }
 
     }
-    public void depositar(Double deposito){
-        if (this.status == true){
-            this.saldo += deposito;
-            System.out.println("Deposito de R$" + deposito +" feito com sucesso!");
-        }else{
-            System.out.println("A conta precisa estar aberta para depositar!");
-        }
+    public void depositar(Double deposito) {
+        if (this.status == true) {
+            if (deposito > 0) {
+                this.saldo += deposito;
+                System.out.println("Deposito de R$" + deposito + " feito com sucesso!");
+            } else {
+                System.out.println("ERRO: O valor do depósito deve ser maior que zero.");
+            }
 
+        } else {
+            System.out.println("Não foi possível depositar. A conta está fechada!");
+        }
     }
     public void sacar(Double saque){
         if (this.status == true){
@@ -66,7 +71,7 @@ public class ContaBanco {
         }
 
     }
-    public void pagarMensal(TipoConta tipo, String dono){
+    public void pagarMensal(){
         this.tipo = tipo;
         this.dono = dono;
         int valorMensal = 0;
@@ -79,7 +84,7 @@ public class ContaBanco {
             }
             if (this.saldo >= valorMensal){
                 this.saldo -= valorMensal;
-                System.out.println("Mensalidade de R$"+valorMensal +" paga com sucesso, saldo atual: !"+this.saldo);
+                System.out.println("Mensalidade de R$"+valorMensal +" paga com sucesso, saldo atual: R$"+this.saldo);
             }else{
                 System.out.println("Saldo insuficiente para pagar a mensalidade");
             }
@@ -88,7 +93,7 @@ public class ContaBanco {
         }
 
     }
-    public void saldoConta(TipoConta tipo, String dono){
+    public void saldoConta(){
         this.tipo = tipo;
         this.dono = dono;
         System.out.println("-------------------");
