@@ -7,7 +7,8 @@ public class Main {
         ContaBanco conta = null;
         while (true) {
             String menu = ("""
-                    ----Menu----
+                    ----BND | Banco Sempre Duro----
+                    ----Menu Banco----
                     1. Criar conta [CP - Poupança | CC - Corrente]
                     2. Fechar conta
                     3. Depositar
