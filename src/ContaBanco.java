@@ -1,6 +1,6 @@
 public class ContaBanco {
-    public int numConta;
-    protected TipoConta tipo;
+    private int numConta;
+    private TipoConta tipo;
     private double saldo;
     private String dono;
     private Boolean status = false;
@@ -14,17 +14,17 @@ public class ContaBanco {
     }
 
     public void abrirConta(){
-        if (this.status == false){
+        if (!this.status){
             this.status = true;
+            double saldoInicial;
              if (this.tipo == TipoConta.CP){
-                 this.saldo = 150;
-                 System.out.println("----Conta----\n Tipo: " + tipo + "\n Dono: " + dono + "\n Aberta com saldo inicial de 150!");
-                 System.out.println("-------------------------");
+                 saldoInicial = 150;
              }else{
-                 this.saldo = 50;
-                 System.out.println("----Conta----\n Tipo: " + tipo + "\n Dono: " + dono + "\n Aberta com saldo inicial de 50!");
-                 System.out.println("-------------------------");
+                 saldoInicial = 50;
              }
+             this.saldo = saldoInicial;
+            System.out.println("----Conta----\n Tipo: " + this.tipo + "\n Dono: " + this.dono + "\n Aberta com saldo inicial de R$" + saldoInicial);
+            System.out.println("-------------------------");
         }else{
             System.out.println("Conta já aberta! ");
         }
@@ -33,7 +33,7 @@ public class ContaBanco {
     }
 
     public void fecharConta(){
-        if (this.status == true){
+        if (this.status){
             if (this.saldo == 0){
                 this.status = false;
                 System.out.println("Conta fechada com sucesso!");
@@ -46,7 +46,7 @@ public class ContaBanco {
 
     }
     public void depositar(Double deposito) {
-        if (this.status == true) {
+        if (this.status) {
             if (deposito > 0) {
                 this.saldo += deposito;
                 System.out.println("Deposito de R$" + deposito + " feito com sucesso!");
@@ -59,7 +59,7 @@ public class ContaBanco {
         }
     }
     public void sacar(Double saque){
-        if (this.status == true){
+        if (this.status){
             if (this.saldo >= saque){
                 this.saldo -= saque;
                 System.out.println("Valor do saque de R$"+saque+" sacado com sucesso!");
@@ -72,10 +72,8 @@ public class ContaBanco {
 
     }
     public void pagarMensal(){
-        this.tipo = tipo;
-        this.dono = dono;
         int valorMensal = 0;
-        if (this.status == true){
+        if (this.status){
             if (this.tipo == TipoConta.CC){
                 valorMensal = 12;
             }else{
@@ -94,8 +92,6 @@ public class ContaBanco {
 
     }
     public void saldoConta(){
-        this.tipo = tipo;
-        this.dono = dono;
         System.out.println("-------------------");
         System.out.println(" Dono: "+dono);
         System.out.println(" Tipo: "+tipo);
