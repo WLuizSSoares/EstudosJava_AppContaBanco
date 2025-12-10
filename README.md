@@ -1,11 +1,11 @@
-###Tecnologias Utilizadas
+### Tecnologias Utilizadas
 Java 17+
 Scanner (entrada de dados)
 Enum (TipoConta)
 Random (geração de número da conta)
 Programação Orientada a Objetos
 
-###Funcionalidades Implementadas
+### Funcionalidades Implementadas
 ✔ Criar conta
 
 O usuário informa:
